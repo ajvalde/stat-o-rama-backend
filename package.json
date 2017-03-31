@@ -1,0 +1,29 @@
+{
+  "name": "stat-o-rama-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node ./bin/www",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajvalde/stat-o-rama-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajvalde/stat-o-rama-backend/issues"
+  },
+  "homepage": "https://github.com/ajvalde/stat-o-rama-backend#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "knex": "^0.12.9",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "pg": "^6.1.5"
+  }
+}
