@@ -2,7 +2,7 @@
   "name": "stat-o-rama-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "node ./bin/www",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,11 +18,13 @@
   },
   "homepage": "https://github.com/ajvalde/stat-o-rama-backend#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "knex": "^0.12.9",
     "request": "^2.81.0"
   },
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "nodemon": "^1.11.0",
     "pg": "^6.1.5"
   }
