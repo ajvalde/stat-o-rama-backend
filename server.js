@@ -7,12 +7,15 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const lolkey = process.env.LoL_key
 
+//routes 
 const league = require('./routes/league');
+const signup = require('/.routes/signup');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/league', league);
+app.use('/signup', signup);
 
 app.get('/', function(req,res){
     res.send('working');
