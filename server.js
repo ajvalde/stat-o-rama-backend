@@ -33,7 +33,7 @@ app.get('/api', function(req,res){
         res.json(stats) 
     });
     
-})
+});
 
 app.listen(3000);
 console.log('API is running on port 3000')
