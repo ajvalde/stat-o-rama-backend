@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+require('dotenv').config()
 // const knex = ()
 const request = require('request');
 const bodyParser = require('body-parser');
@@ -37,3 +38,4 @@ app.get('/api', function(req,res){
 
 app.listen(3000);
 console.log('API is running on port 3000')
+module.exports = app;
