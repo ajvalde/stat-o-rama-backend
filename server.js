@@ -7,16 +7,23 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const lolkey = process.env.LoL_key
 
+//routes 
 const league = require('./routes/league');
+const signup = require('./routes/signup');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/league', league);
+app.use('/signup', signup);
 
 app.get('/', function(req,res){
     res.send('working');
 });
+
+app.get('/signup', function(req,res){
+
+})
 
 app.get('/api', function(req,res){
     request('https://ow-api.herokuapp.com/profile/pc/us/Synstar-1557', function (err,body){
