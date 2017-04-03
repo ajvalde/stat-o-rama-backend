@@ -34,6 +34,7 @@ app.get('/api', function(req,res){
     });
     
 });
+app.set('port', (process.env.PORT || 5000));
 
 app.listen(3000);
 console.log('API is running on port 3000')
