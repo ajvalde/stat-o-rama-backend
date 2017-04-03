@@ -30,8 +30,7 @@ app.get('/api', function(req,res){
     request('https://ow-api.herokuapp.com/profile/pc/us/Synstar-1557', function (err,body){
         var stats = JSON.parse(body.body)
         // console.log(stats)
-        res.json(stats)
-        
+        res.json(stats) 
     });
     
 })
