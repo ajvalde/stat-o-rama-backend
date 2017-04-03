@@ -31,7 +31,7 @@ app.get('/api', function(req,res){
         // console.log(stats)
         res.json(stats)
         
-    });
+    })
     
 })
 
