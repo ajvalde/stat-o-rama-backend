@@ -18,12 +18,17 @@
   },
   "homepage": "https://github.com/ajvalde/stat-o-rama-backend#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
     "knex": "^0.12.9",
+    "pg": "^6.1.5",
+    "pg-native": "^1.10.0",
     "request": "^2.81.0"
   },
   "devDependencies": {
+    "MD5": "^1.3.0",
     "dotenv": "^4.0.0",
     "nodemon": "^1.11.0",
     "pg": "^6.1.5"
