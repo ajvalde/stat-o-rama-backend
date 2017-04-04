@@ -11,12 +11,14 @@ const lolkey = process.env.LoL_key
 //routes 
 const league = require('./routes/league');
 const signup = require('./routes/signup');
+const users = require('./routes/users');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/league', league);
 app.use('/signup', signup);
+app.use('/users', users);
 
 app.get('/', function(req,res){
     res.send('working');
@@ -33,8 +35,11 @@ app.get('/api', function(req,res){
         res.json(stats) 
     });
     
-})
+});
 
-app.listen(3000);
-console.log('API is running on port 3000')
+
+var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+  });
 module.exports = app;

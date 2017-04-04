@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
-const md5 = require('md5');
 const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
 const hash = bcrypt.hashSync("B4c0/\/", salt);
