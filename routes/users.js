@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
+const knex = require('../db/knex.js');
 
 function get_users(){
     return knex.select().from('users')

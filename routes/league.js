@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
+const knex = require('../db/knex.js');
 const lolkey = process.env.LoL_key
 
 const name = 'systar'.toLowerCase().replace(/ /g, '');
