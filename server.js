@@ -34,8 +34,10 @@ app.get('/api', function(req,res){
     });
     
 });
-app.set('port', (process.env.PORT || 5000));
 
-app.listen(5000);
-console.log('API is running on port 5000')
+
+var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+  });
 module.exports = app;
