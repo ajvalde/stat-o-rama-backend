@@ -5,6 +5,7 @@ const knex = require('../db/knex.js');
 const lolkey = process.env.LoL_key
 const summoner_name = ""
 let summoner_id = ""
+let summoner_stats = {}
 
 
 
@@ -38,8 +39,10 @@ function getid(sum_name){
 function unrankedStats(id){
     request('https://na.api.riotgames.com/api/lol/NA/v1.3/stats/by-summoner/' + id + '/summary?season=SEASON2017&api_key=' + lolkey, function(err,body){
         let summoner_obj = JSON.parse(body.body)
-        console.log(summoner_obj.playerStatSummaries)
+         summoner_stats = summoner_obj.playerStatSummaries[6]
+        console.log(summoner_stats)
     })
 }
+
 
 module.exports = router;
