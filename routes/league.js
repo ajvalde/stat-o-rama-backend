@@ -5,7 +5,7 @@ const knex = require('../db/knex.js');
 const lolkey = process.env.LoL_key
 const summoner_name = ""
 let summoner_id = ""
-let summoner_stats = {}
+var summoner_stats = {}
 
 
 
@@ -28,21 +28,39 @@ router.post('/', function (req, res){
     res.json(req.body)
 })
 
+router.get('/playersummary', function (req,res){
+    res.json(summoner_stats)
+})
+
+function SummonerStats(RankedFlex,RankedSolo,Aram,Unranked) {
+    this.RankedFlex = RankedFlex
+    this.RankedSolo = RankedSolo
+    this.Aram = Aram
+    this.Unranked = Unranked
+}
+
 function getid(sum_name){
      request('https://na.api.riotgames.com/api/lol/NA/v1.4/summoner/by-name/'+ sum_name + '?api_key=' + lolkey, function(err,body){
        let summoner_obj = JSON.parse(body.body)
        let summoner_id = summoner_obj[sum_name].id
-       unrankedStats(summoner_id)
+      var statthings = getStats(summoner_id)
+       
     })
 }
 
-function unrankedStats(id){
+
+function getStats(id){
     request('https://na.api.riotgames.com/api/lol/NA/v1.3/stats/by-summoner/' + id + '/summary?season=SEASON2017&api_key=' + lolkey, function(err,body){
         let summoner_obj = JSON.parse(body.body)
-         summoner_stats = summoner_obj.playerStatSummaries
-         console.log(summoner_stats[8])
+        let  sum_stats = summoner_obj.playerStatSummaries
+        let newsummoner = new SummonerStats(sum_stats[2],sum_stats[3],sum_stats[6],sum_stats[8])
+        summoner_stats = newsummoner
+        console.log(summoner_stats)
+        return summoner_stats
     })
 }
+
+
 
 
 module.exports = router;
