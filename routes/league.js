@@ -39,8 +39,8 @@ function getid(sum_name){
 function unrankedStats(id){
     request('https://na.api.riotgames.com/api/lol/NA/v1.3/stats/by-summoner/' + id + '/summary?season=SEASON2017&api_key=' + lolkey, function(err,body){
         let summoner_obj = JSON.parse(body.body)
-         summoner_stats = summoner_obj.playerStatSummaries[6]
-        console.log(summoner_stats)
+         summoner_stats = summoner_obj.playerStatSummaries
+         console.log(summoner_stats[8])
     })
 }
 
