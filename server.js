@@ -6,6 +6,7 @@ require('dotenv').config()
 const request = require('request');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const cors = require('cors')
 const lolkey = process.env.LoL_key
 
 //routes 
@@ -15,6 +16,7 @@ const users = require('./routes/users');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors())
 
 app.use('/league', league);
 app.use('/signup', signup);
