@@ -10,7 +10,6 @@ var summoner_stats = {}
 
 
 
-const name = 'systar'.toLowerCase().replace(/ /g, '');
 
 router.get('/', function(req,res){
     res.send('working')
@@ -20,7 +19,8 @@ router.get('/', function(req,res){
 router.post('/', function (req, res){
     let summonerName = req.body.summoner_name.toLowerCase().replace(/ /g, '');
     getid(summonerName)
-    res.json(summonerName)
+    console.log(summonerName)
+    res.json(req.body)
 })
 
 router.get('/playersummary', function (req,res){
@@ -33,6 +33,7 @@ function getid(sum_name){
        let summoner_obj = JSON.parse(body.body)
        let summoner_id = summoner_obj[sum_name].id
        getStats(summoner_id,sum_name)
+       console.log(summoner_id)
        
     })
 }
