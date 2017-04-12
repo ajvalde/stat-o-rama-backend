@@ -89,10 +89,11 @@ function getChampData(id){
             champ = JSON.parse(body.body)
             // console.log(champ.id,champ.name,champ.title,champ.image)
             champ_info = {}
+            daName = champ.name.replace(/ /g, '')
             champ_info["id"] = champ.id
             champ_info["name"] = champ.name
             champ_info["title"] = champ.title
-            champ_info["images"] = "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/" + champ.name + ".png" 
+            champ_info["images"] = "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/" + daName + ".png" 
              console.log(champ_info)
              summoner_stats["top3"].push(champ_info)
             
