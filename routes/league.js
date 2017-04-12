@@ -5,7 +5,10 @@ const knex = require('../db/knex.js');
 const lolkey = process.env.LoL_key
 const summoner_name = ""
 let summoner_id = ""
-var summoner_stats = {}
+var summoner_stats = {
+    top3: []
+}
+var top_three = {}
 
 
 
@@ -19,12 +22,16 @@ router.get('/', function(req,res){
 router.post('/', function (req, res){
     let summonerName = req.body.summoner_name.toLowerCase().replace(/ /g, '');
     getid(summonerName)
-    console.log(summonerName)
+    // console.log(summonerName)
     res.json(req.body)
 })
 
 router.get('/playersummary', function (req,res){
     res.json(summoner_stats)
+})
+
+router.get('/champs', function (req, res){
+    res.json(top_three)
 })
 
 
@@ -33,7 +40,8 @@ function getid(sum_name){
        let summoner_obj = JSON.parse(body.body)
        let summoner_id = summoner_obj[sum_name].id
        getStats(summoner_id,sum_name)
-       console.log(summoner_id)
+       topThree(summoner_id)
+    //    console.log(summoner_id)
        
     })
 }
@@ -61,7 +69,32 @@ function getStats(id,name){
     })
 }
 
+function topThree(id) {
+    request('https://na.api.riotgames.com/championmastery/location/NA1/player/' + id + '/topchampions?count=3&api_key=' + lolkey, function(err, body){
+        top3 = JSON.parse(body.body) 
+         console.log(top3)
+        getChampData(top3[0].championId)
+        getChampData(top3[1].championId)
+        getChampData(top3[2].championId)
+        
+        
+        
+    })
+}
 
-console.log(summoner_stats)
+function getChampData(id){
+    request('https://global.api.riotgames.com/api/lol/static-data/NA/v1.2/champion/' + id + '?champData=all&api_key=' + lolkey, function(err, body){
+            champ = JSON.parse(body.body)
+            // console.log(champ.id,champ.name,champ.title,champ.image)
+            champ_info = {}
+            champ_info["id"] = champ.id
+            champ_info["name"] = champ.name
+            champ_info["title"] = champ.title
+            champ_info["images"] = champ.image
+             console.log(champ_info)
+             summoner_stats["top3"].push(champ_info)
+            
+    })
+}
 
 module.exports = router;
