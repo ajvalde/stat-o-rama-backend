@@ -73,9 +73,11 @@ function topThree(id) {
     request('https://na.api.riotgames.com/championmastery/location/NA1/player/' + id + '/topchampions?count=3&api_key=' + lolkey, function(err, body){
         top3 = JSON.parse(body.body) 
          console.log(top3)
+         summoner_stats["top3"] = []
         getChampData(top3[0].championId)
         getChampData(top3[1].championId)
         getChampData(top3[2].championId)
+        
         
         
         
@@ -90,7 +92,7 @@ function getChampData(id){
             champ_info["id"] = champ.id
             champ_info["name"] = champ.name
             champ_info["title"] = champ.title
-            champ_info["images"] = champ.image
+            champ_info["images"] = "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/" + champ.name + ".png" 
              console.log(champ_info)
              summoner_stats["top3"].push(champ_info)
             
