@@ -15,7 +15,7 @@ var top_three = {}
 
 
 router.get('/', function(req,res){
-    res.send('working')
+    res.send('working.')
 })
 
 
